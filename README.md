@@ -2,6 +2,12 @@
 
 This workspace is for an autonomous Android app factory.
 
+Live repo:
+- https://github.com/yadavharshit448-png/openclaw1
+
+Expected static dashboard URL after GitHub Pages is enabled:
+- https://yadavharshit448-png.github.io/openclaw1/
+
 Current default operating mode: continuous app ideation + app code generation. Publishing is intentionally deferred until later.
 
 Why gated:

@@ -2,18 +2,19 @@
 
 ## Option 1: Build the static dashboard
 ```bash
-cd /home/Lenovo/android-autopilot
+cd ./android-autopilot
 python3 scripts/build_static_dashboard.py
 ```
 
 This writes:
-- `/home/Lenovo/android-autopilot/site/index.html`
+- `site/index.html`
 
-Open that file locally, or publish it with GitHub Pages.
+Open that file locally, or use GitHub Pages once enabled for:
+- `https://yadavharshit448-png.github.io/openclaw1/`
 
 ## Option 2: Generate the next app
 ```bash
-cd /home/Lenovo/android-autopilot
+cd ./android-autopilot
 python3 scripts/generate_next_app.py
 ```
 
@@ -24,7 +25,8 @@ python3 scripts/build_static_dashboard.py
 
 ## Option 3: Inspect app code folders
 Generated apps live in:
-- `/home/Lenovo/android-autopilot/apps/`
+- `apps/`
 
 ## Option 4: Git repository
-This workspace is initialized as a git repo so you can push it to GitHub later.
+This workspace is now connected to:
+- `https://github.com/yadavharshit448-png/openclaw1`

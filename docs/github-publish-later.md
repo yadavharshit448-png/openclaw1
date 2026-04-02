@@ -1,27 +1,18 @@
-# GitHub publish later
+# GitHub publish status
 
-The workspace is already a local git repository.
+The workspace is now connected to GitHub.
 
 Current status:
-- initialized locally
-- commits created
-- no remote configured yet
+- local repo connected to `origin`
+- remote repo: `https://github.com/yadavharshit448-png/openclaw1`
+- `main` pushed successfully
 - GitHub Pages workflow added for the static dashboard
+- repo homepage set to `https://yadavharshit448-png.github.io/openclaw1/`
 
-Why no remote yet:
-- `gh` CLI is not installed
-- no `GITHUB_TOKEN` is configured in this environment
+Next step to make the dashboard live:
+1. Open `https://github.com/yadavharshit448-png/openclaw1/settings/pages`
+2. Under Build and deployment, set Source to `GitHub Actions`
+3. Push to `main` again if GitHub asks for a fresh deployment run
 
-When credentials are available later, one simple path is:
-```bash
-cd /home/Lenovo/android-autopilot
-git branch -M main
-git remote add origin https://github.com/<your-username>/android-autopilot.git
-git push -u origin main
-```
-
-Or with GitHub CLI later:
-```bash
-cd /home/Lenovo/android-autopilot
-gh repo create android-autopilot --public --source . --push
-```
+Once enabled, the dashboard should appear at:
+- `https://yadavharshit448-png.github.io/openclaw1/`

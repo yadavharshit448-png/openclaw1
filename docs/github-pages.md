@@ -4,7 +4,7 @@ This repository now uses a static dashboard, not a VM-hosted live web server.
 
 ## Build locally
 ```bash
-cd /home/Lenovo/android-autopilot
+cd ./android-autopilot
 python3 scripts/build_static_dashboard.py
 ```
 
@@ -23,21 +23,16 @@ What it does on every push to `main`:
 4. deploys it to GitHub Pages
 
 ## GitHub requirements
-To make it live, you still need to push this repository to GitHub and enable Pages for Actions.
+This repository is already pushed to GitHub:
+- `https://github.com/yadavharshit448-png/openclaw1`
 
-Suggested steps after credentials are available:
-```bash
-cd /home/Lenovo/android-autopilot
-git branch -M main
-git remote add origin https://github.com/<your-username>/android-autopilot.git
-git push -u origin main
-```
+To make the dashboard live, enable Pages for Actions:
+- open `https://github.com/yadavharshit448-png/openclaw1/settings/pages`
+- under Build and deployment, set Source to `GitHub Actions`
+- if GitHub asks for a fresh deployment, push to `main` again
 
-Then in GitHub:
-- Settings
-- Pages
-- Build and deployment
-- Source: GitHub Actions
+Expected live URL:
+- `https://yadavharshit448-png.github.io/openclaw1/`
 
 ## What the static dashboard shows
 - current app specs
