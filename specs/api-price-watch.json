@@ -1,0 +1,37 @@
+{
+  "slug": "api-price-watch",
+  "app_name": "API Price Watch",
+  "tagline": "Track vendor pricing changes before your margins get hit.",
+  "package_name": "com.harshitlabs.apipricewatch",
+  "theme_seed": "#f97316",
+  "target_user": "Bootstrapped SaaS founders and developers relying on paid APIs and cloud tools.",
+  "problem": "Third-party API pricing changes can silently destroy unit economics if founders notice too late.",
+  "solution": "A lightweight mobile tracker for vendor pricing, usage assumptions, margin notes, and renewal alerts.",
+  "feature_v1": [
+    "Vendor cards with current price and expected usage",
+    "Margin impact estimator",
+    "Renewal and pricing review reminders",
+    "Scenario notes for alternative vendors",
+    "Demo charts with local sample data"
+  ],
+  "monetization": "Free for a few vendors, subscription for unlimited tracking and future sync.",
+  "privacy_notes": [
+    "Store only pricing notes, not API secrets.",
+    "No external sync in MVP.",
+    "Add a privacy policy before notifications or cloud backup."
+  ],
+  "screens": [
+    {
+      "title": "Vendor Costs",
+      "description": "Track important APIs and watch their pricing trends."
+    },
+    {
+      "title": "Margin Impact",
+      "description": "Estimate how vendor changes affect your business model."
+    },
+    {
+      "title": "Alternatives",
+      "description": "Save fallback vendor notes and switching ideas."
+    }
+  ]
+}
