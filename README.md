@@ -19,21 +19,25 @@ Recommended stack:
 Repository layout:
 - docs/implementation-plan.md: end-to-end plan
 - docs/play-console-checklist.md: what you must connect later for Play
-- docs/app-generation-pipeline.md: app-creation-only automation flow
+- docs/viewing-apps.md: how to inspect generated apps and static dashboard output
 - config/policy.example.yaml: app quality/publishing policy template
 - config/policy.yaml: active policy
 - templates/app-brief.example.json: schema for generated app concepts
 - prompts/app-factory-builder.md: reusable app generation prompt
 - scripts/scaffold_expo_app.py: turns a JSON spec into an Expo app scaffold
+- scripts/generate_next_app.py: creates the next app spec/scaffold
+- scripts/build_static_dashboard.py: builds the GitHub Pages dashboard
 - specs/: machine-readable app specs
 - ideas/: human-readable app briefs
 - apps/: generated app codebases
+- site/: generated static dashboard output
 - .github/workflows/eas-build-submit.yml: CI/CD pipeline template for later use
+- .github/workflows/deploy-pages.yml: GitHub Pages deployment workflow
 
 Current viewing/generation tools:
-1. Interactive local dashboard at http://127.0.0.1:8123 via `bash scripts/serve_dashboard.sh`
+1. Static dashboard generated into `site/index.html` for GitHub Pages
 2. Git repository tracking all generated apps locally
-3. On-demand generator endpoint in the dashboard to create the next app instantly
+3. Local generator script to create the next app instantly: `python3 scripts/generate_next_app.py`
 
 Future unblockers from you when we later connect publishing:
 1. Expo account / EAS auth

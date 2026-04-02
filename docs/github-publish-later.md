@@ -4,8 +4,9 @@ The workspace is already a local git repository.
 
 Current status:
 - initialized locally
-- initial commit created
+- commits created
 - no remote configured yet
+- GitHub Pages workflow added for the static dashboard
 
 Why no remote yet:
 - `gh` CLI is not installed

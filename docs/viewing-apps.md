@@ -1,29 +1,30 @@
 # Viewing generated apps
 
-## Option 1: Open dashboard
-Start the interactive dashboard server:
+## Option 1: Build the static dashboard
 ```bash
 cd /home/Lenovo/android-autopilot
-bash scripts/serve_dashboard.sh
+python3 scripts/build_static_dashboard.py
 ```
-Then visit from the VM itself:
-- `http://127.0.0.1:8123`
 
-If the VM firewall/network allows inbound traffic, you can also try from your own machine:
-- `http://104.197.63.245:8123`
+This writes:
+- `/home/Lenovo/android-autopilot/site/index.html`
 
-The dashboard now lets you:
-- browse generated apps
-- open raw spec JSON and app READMEs
-- trigger `Generate next app now`
+Open that file locally, or publish it with GitHub Pages.
 
-## Option 2: Inspect app code folders
+## Option 2: Generate the next app
+```bash
+cd /home/Lenovo/android-autopilot
+python3 scripts/generate_next_app.py
+```
+
+Then rebuild the static dashboard:
+```bash
+python3 scripts/build_static_dashboard.py
+```
+
+## Option 3: Inspect app code folders
 Generated apps live in:
 - `/home/Lenovo/android-autopilot/apps/`
 
-Current apps:
-- `ship-ping`
-- `deprecation-radar`
-
-## Option 3: Git repository
+## Option 4: Git repository
 This workspace is initialized as a git repo so you can push it to GitHub later.

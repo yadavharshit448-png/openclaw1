@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width,initial-scale=1' />
+  <title>Android Autopilot Dashboard</title>
+  <style>
+    :root { --bg:#081120; --card:#111827; --muted:#94a3b8; --text:#f8fafc; --accent:#38bdf8; --border:#1f2937; --ok:#22c55e; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:linear-gradient(180deg,#081120,#0f172a); color:var(--text); font:16px/1.5 Inter,system-ui,sans-serif; }
+    .wrap { max-width:1150px; margin:0 auto; padding:32px 20px 60px; }
+    .hero { display:flex; justify-content:space-between; gap:16px; align-items:flex-start; margin-bottom:20px; flex-wrap:wrap; }
+    h1 { margin:0 0 8px; font-size:38px; }
+    .hero p, p { color:var(--muted); }
+    .stats { display:flex; gap:12px; flex-wrap:wrap; margin:18px 0 28px; }
+    .stat { background:rgba(17,24,39,.92); border:1px solid var(--border); border-radius:16px; padding:14px 16px; min-width:160px; }
+    .stat b { display:block; font-size:24px; color:var(--text); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:18px; }
+    .card { background:rgba(17,24,39,.92); border:1px solid var(--border); border-radius:20px; padding:20px; box-shadow:0 12px 30px rgba(0,0,0,.25); }
+    .row.top { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
+    h2 { margin:0; font-size:24px; }
+    h3 { margin:18px 0 8px; font-size:15px; color:var(--accent); text-transform:uppercase; letter-spacing:.08em; }
+    .tagline { color:#cbd5e1; margin:6px 0 0; }
+    .status { background:rgba(34,197,94,.14); color:#86efac; border:1px solid rgba(34,197,94,.4); border-radius:999px; padding:6px 10px; font-size:12px; font-weight:700; white-space:nowrap; }
+    ul { margin:0; padding-left:18px; color:var(--text); }
+    li { margin:5px 0; }
+    .chips { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+    .chip { font-size:12px; color:#dbeafe; background:rgba(56,189,248,.12); border:1px solid rgba(56,189,248,.35); padding:6px 10px; border-radius:999px; }
+    .links { display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
+    .btn { background:var(--accent); color:#082f49; border:none; border-radius:12px; padding:10px 14px; font-weight:800; text-decoration:none; display:inline-block; }
+    .btn.secondary { background:transparent; color:var(--text); border:1px solid var(--border); }
+    code { color:#bfdbfe; }
+  </style>
+</head>
+<body>
+  <div class='wrap'>
+    <div class='hero'>
+      <div>
+        <div style='color:#94a3b8'>Static GitHub Pages dashboard</div>
+        <h1>Android Autopilot</h1>
+        <p>This page is generated from the app factory repository and is safe to publish on GitHub Pages. It shows the current app specs and scaffolded apps without requiring a VM web server.</p>
+      </div>
+      <div>
+        <a class='btn' href='../README.md'>Repository README</a>
+      </div>
+    </div>
+    <div class='stats'>
+      <div class='stat'><span>Total specs</span><b>3</b></div>
+      <div class='stat'><span>Generated apps</span><b>3</b></div>
+      <div class='stat'><span>Idea briefs</span><b>1</b></div>
+    </div>
+    <div class='grid'>
+<section class='card'>
+  <div class='row top'>
+    <div>
+      <h2>Deprecation Radar</h2>
+      <p class='tagline'>Track API, SDK, and vendor change risk before it breaks your product.</p>
+    </div>
+    <span class='status'>Scaffolded</span>
+  </div>
+  <p><strong>Slug:</strong> deprecation-radar</p>
+  <p><strong>Package:</strong> com.harshitlabs.deprecationradar</p>
+  <p><strong>Target user:</strong> Solo founders, indie hackers, and small developer teams that rely on third-party APIs, SDKs, and SaaS tools.</p>
+  <p><strong>Problem:</strong> Important deprecation notices, pricing changes, SSL expiries, and migration deadlines get scattered across docs, emails, and status pages, so lean teams react too late.</p>
+  <p><strong>Solution:</strong> A mobile command center for tracking vendors, logging deadlines, keeping migration notes, and surfacing the riskiest upcoming changes in one calm, offline-friendly workflow.</p>
+  <div class='chips'><span class='chip'>Command Center</span><span class='chip'>Vendor Watchlist</span><span class='chip'>Timeline &amp; Notes</span></div>
+  <h3>V1 features</h3>
+  <ul><li>Priority inbox for risks due in the next 7, 30, and 90 days</li><li>Tracked vendor cards with category, owner, and criticality</li><li>Deadline timeline for API sunsets, contract renewals, and certificate expiry</li><li>Migration checklist and notes for each vendor</li><li>Sample JSON export/import handoff section for offline-first workflows</li></ul>
+  <div class='links'><a class='btn secondary' href='../specs/deprecation-radar.json'>Spec JSON</a><a class='btn secondary' href='../apps/deprecation-radar/README.md'>App README</a><a class='btn secondary' href='../ideas/2026-04-02-best-idea.md'>Idea brief</a></div>
+</section>
+
+<section class='card'>
+  <div class='row top'>
+    <div>
+      <h2>Launch Checklist</h2>
+      <p class='tagline'>Run product launches from your phone without missing critical steps.</p>
+    </div>
+    <span class='status'>Scaffolded</span>
+  </div>
+  <p><strong>Slug:</strong> launch-checklist</p>
+  <p><strong>Package:</strong> com.harshitlabs.launchchecklist</p>
+  <p><strong>Target user:</strong> Indie founders and small product teams shipping launches, campaigns, and releases.</p>
+  <p><strong>Problem:</strong> Launch tasks get scattered across chats and docs, causing missed steps, late checks, and chaotic release day coordination.</p>
+  <p><strong>Solution:</strong> A mobile launch control room with structured pre-launch, launch-day, and post-launch checklists plus owners and status snapshots.</p>
+  <div class='chips'><span class='chip'>Launch Board</span><span class='chip'>Today</span><span class='chip'>Retro Notes</span></div>
+  <h3>V1 features</h3>
+  <ul><li>Launch templates for product release, campaign, and feature rollout</li><li>Owner and deadline fields for each checklist item</li><li>Critical blocker section with severity tags</li><li>Today view for tasks due now</li><li>Launch notes and retro summary</li><li>Offline-first sample data mode</li></ul>
+  <div class='links'><a class='btn secondary' href='../specs/launch-checklist.json'>Spec JSON</a><a class='btn secondary' href='../apps/launch-checklist/README.md'>App README</a></div>
+</section>
+
+<section class='card'>
+  <div class='row top'>
+    <div>
+      <h2>ShipPing</h2>
+      <p class='tagline'>Monitor your product&#x27;s critical endpoints and cron jobs from your phone.</p>
+    </div>
+    <span class='status'>Scaffolded</span>
+  </div>
+  <p><strong>Slug:</strong> ship-ping</p>
+  <p><strong>Package:</strong> com.harshitlabs.shippingo</p>
+  <p><strong>Target user:</strong> Indie hackers, solo founders, and small developer teams running APIs, web apps, or scheduled jobs.</p>
+  <p><strong>Problem:</strong> Small teams discover downtime too late because many monitoring tools are desktop-first, noisy, or too expensive for tiny products.</p>
+  <p><strong>Solution:</strong> A mobile-first monitoring companion that shows endpoint health, cron freshness, SSL expiry, and incident notes in a lightweight dashboard.</p>
+  <div class='chips'><span class='chip'>Overview</span><span class='chip'>Projects</span><span class='chip'>Incidents</span></div>
+  <h3>V1 features</h3>
+  <ul><li>Project-based endpoint tracking</li><li>Manual HTTP health checks and latency snapshots</li><li>Cron heartbeat freshness tracker</li><li>SSL expiry reminder section</li><li>Incident notes timeline</li><li>Offline cache of latest known status</li><li>JSON export/import for configuration</li></ul>
+  <div class='links'><a class='btn secondary' href='../specs/ship-ping.json'>Spec JSON</a><a class='btn secondary' href='../apps/ship-ping/README.md'>App README</a></div>
+</section>
+</div>
+  </div>
+</body>
+</html>
