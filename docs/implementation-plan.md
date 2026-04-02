@@ -33,8 +33,9 @@ Steps:
 1. Create Expo token.
 2. Create Google Play Android Publisher service account.
 3. Grant Play Console permissions.
-4. Store EXPO_TOKEN and GOOGLE_SERVICE_ACCOUNT_JSON in CI secrets.
-5. Verify eas whoami succeeds in CI.
+4. Store EXPO_TOKEN and GOOGLE_SERVICE_ACCOUNT_JSON in GitHub Actions secrets.
+5. Verify `eas whoami` succeeds in CI inside the selected app folder under `apps/<slug>/`.
+6. Use workflow_dispatch `app_path` input to build a specific app when needed.
 
 ### Task 3: Create the first production app repository
 Objective: generate one real app end-to-end before scaling.

@@ -37,6 +37,18 @@ Choose one:
 - ANDROID_PACKAGE_NAME_PREFIX (optional)
 - APPLE credentials not needed unless later expanding to iOS
 
+## GitHub Actions setup for this repo
+- Workflow file: `.github/workflows/eas-build-submit.yml`
+- This repo is a factory monorepo, so builds must run inside `apps/<slug>/`
+- Manual workflow runs should pass `app_path`, for example `apps/api-price-watch`
+- Push-triggered runs try to detect the changed app directory automatically
+
+## How to add the secrets in GitHub
+1. Open `https://github.com/yadavharshit448-png/openclaw1/settings/secrets/actions`
+2. Create `EXPO_TOKEN`
+3. Create `GOOGLE_SERVICE_ACCOUNT_JSON` if you want Play internal submission
+4. Re-run the EAS workflow manually after the secrets are saved
+
 ## Safe default publishing mode
 Recommended first phase:
 - build automatically

@@ -45,6 +45,16 @@ Current viewing/generation tools:
 2. Git repository tracking all generated apps locally
 3. Local generator script to create the next app instantly: `python3 scripts/generate_next_app.py`
 
+GitHub Actions build workflow:
+- `.github/workflows/eas-build-submit.yml`
+- Builds an app from `apps/<slug>/`, not from the repo root
+- On manual runs, pass `app_path` such as `apps/api-price-watch`
+- On pushes, it attempts to build the changed app directory automatically
+
+GitHub secrets needed for Android builds:
+1. `EXPO_TOKEN` required for EAS authentication and cloud builds
+2. `GOOGLE_SERVICE_ACCOUNT_JSON` optional for Play internal testing submission
+
 Future unblockers from you when we later connect publishing:
 1. Expo account / EAS auth
 2. Google Play Console developer access
