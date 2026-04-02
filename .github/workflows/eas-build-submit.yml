@@ -71,6 +71,38 @@ jobs:
         working-directory: ${{ needs.prepare.outputs.app_path }}
         run: npm install
 
+      - name: Ensure EAS project is linked
+        working-directory: ${{ needs.prepare.outputs.app_path }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if python3 - <<'PY'
+import json
+from pathlib import Path
+data = json.loads(Path('app.json').read_text())
+print(bool(data.get('expo', {}).get('extra', {}).get('eas', {}).get('projectId')))
+PY
+          then
+            HAS_PROJECT_ID=$(python3 - <<'PY'
+import json
+from pathlib import Path
+data = json.loads(Path('app.json').read_text())
+print('true' if data.get('expo', {}).get('extra', {}).get('eas', {}).get('projectId') else 'false')
+PY
+)
+          else
+            HAS_PROJECT_ID=false
+          fi
+
+          if [ "$HAS_PROJECT_ID" = "false" ]; then
+            echo "No EAS project linked in app.json. Initializing project non-interactively..."
+            eas project:init --force --non-interactive
+          else
+            echo "EAS project already linked in app.json."
+          fi
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
       - name: Authenticate with Expo
         working-directory: ${{ needs.prepare.outputs.app_path }}
         run: eas whoami

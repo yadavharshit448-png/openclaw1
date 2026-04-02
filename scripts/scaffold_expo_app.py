@@ -100,7 +100,10 @@ def main():
     }
 
     eas_json = {
-        'cli': {'version': '>= 10.0.0'},
+        'cli': {
+            'version': '>= 10.0.0',
+            'appVersionSource': 'remote'
+        },
         'build': {
             'development': {'developmentClient': True, 'distribution': 'internal'},
             'preview': {'distribution': 'internal'},

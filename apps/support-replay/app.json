@@ -14,7 +14,10 @@
       }
     },
     "extra": {
-      "tagline": "Turn recurring support pain into a fixable product backlog."
+      "tagline": "Turn recurring support pain into a fixable product backlog.",
+      "eas": {
+        "projectId": "66aa0032-776e-42d9-85aa-a50acb8daccf"
+      }
     }
   }
 }
