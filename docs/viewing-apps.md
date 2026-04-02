@@ -1,16 +1,18 @@
 # Viewing generated apps
 
 ## Option 1: Open dashboard
-Open:
-- `/home/Lenovo/android-autopilot/web/index.html`
-
-Or serve it:
+Start the interactive dashboard server:
 ```bash
 cd /home/Lenovo/android-autopilot
-python3 -m http.server 8123 -d web
+bash scripts/serve_dashboard.sh
 ```
 Then visit:
 - `http://127.0.0.1:8123`
+
+The dashboard now lets you:
+- browse generated apps
+- open raw spec JSON and app READMEs
+- trigger `Generate next app now`
 
 ## Option 2: Inspect app code folders
 Generated apps live in:

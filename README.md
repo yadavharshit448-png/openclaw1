@@ -30,7 +30,12 @@ Repository layout:
 - apps/: generated app codebases
 - .github/workflows/eas-build-submit.yml: CI/CD pipeline template for later use
 
-Next unblockers from you:
+Current viewing/generation tools:
+1. Interactive local dashboard at http://127.0.0.1:8123 via `bash scripts/serve_dashboard.sh`
+2. Git repository tracking all generated apps locally
+3. On-demand generator endpoint in the dashboard to create the next app instantly
+
+Future unblockers from you when we later connect publishing:
 1. Expo account / EAS auth
 2. Google Play Console developer access
 3. Google service account JSON for Android Publisher API

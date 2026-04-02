@@ -1,0 +1,38 @@
+{
+  "slug": "launch-checklist",
+  "app_name": "Launch Checklist",
+  "tagline": "Run product launches from your phone without missing critical steps.",
+  "package_name": "com.harshitlabs.launchchecklist",
+  "theme_seed": "#14b8a6",
+  "target_user": "Indie founders and small product teams shipping launches, campaigns, and releases.",
+  "problem": "Launch tasks get scattered across chats and docs, causing missed steps, late checks, and chaotic release day coordination.",
+  "solution": "A mobile launch control room with structured pre-launch, launch-day, and post-launch checklists plus owners and status snapshots.",
+  "feature_v1": [
+    "Launch templates for product release, campaign, and feature rollout",
+    "Owner and deadline fields for each checklist item",
+    "Critical blocker section with severity tags",
+    "Today view for tasks due now",
+    "Launch notes and retro summary",
+    "Offline-first sample data mode"
+  ],
+  "monetization": "Free for one launch board, then Pro for unlimited boards and templates.",
+  "privacy_notes": [
+    "Keep launch data local until sync is explicitly added.",
+    "Do not add analytics before a privacy policy exists.",
+    "Avoid collecting customer PII in checklist notes."
+  ],
+  "screens": [
+    {
+      "title": "Launch Board",
+      "description": "See launch phases, owners, blockers, and completion status in one place."
+    },
+    {
+      "title": "Today",
+      "description": "Focus view for launch-critical tasks due today or overdue."
+    },
+    {
+      "title": "Retro Notes",
+      "description": "Capture what worked, what failed, and next improvements after launch."
+    }
+  ]
+}
