@@ -6,8 +6,11 @@ Start the interactive dashboard server:
 cd /home/Lenovo/android-autopilot
 bash scripts/serve_dashboard.sh
 ```
-Then visit:
+Then visit from the VM itself:
 - `http://127.0.0.1:8123`
+
+If the VM firewall/network allows inbound traffic, you can also try from your own machine:
+- `http://104.197.63.245:8123`
 
 The dashboard now lets you:
 - browse generated apps

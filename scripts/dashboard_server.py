@@ -91,8 +91,10 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main():
-    server = HTTPServer(('127.0.0.1', 8123), Handler)
-    print('Dashboard server running at http://127.0.0.1:8123')
+    host = '0.0.0.0'
+    port = 8123
+    server = HTTPServer((host, port), Handler)
+    print(f'Dashboard server running at http://{host}:{port}')
     server.serve_forever()
 
 
