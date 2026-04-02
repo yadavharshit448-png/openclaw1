@@ -1,0 +1,31 @@
+{
+  "idea_id": "2026-04-02-devsnippetstudio",
+  "app_name": "DevSnippet Studio",
+  "tagline": "Save, organize, and run reusable mobile dev snippets.",
+  "target_user": "Android and backend developers",
+  "problem": "Developers repeatedly copy snippets from notes, chats, and repos without a fast mobile workflow.",
+  "solution": "A searchable snippet library with tags, favorites, offline storage, and quick copy actions.",
+  "monetization": "Freemium with paid cloud sync",
+  "why_now": [
+    "Developers increasingly use mobile for quick reference",
+    "Small utility apps can succeed with strong UX and niche targeting"
+  ],
+  "feature_v1": [
+    "Create/edit/delete snippets",
+    "Tagging and search",
+    "Favorites",
+    "Offline local persistence",
+    "Export/import JSON"
+  ],
+  "store_assets_needed": [
+    "icon",
+    "feature graphic",
+    "3 phone screenshots",
+    "privacy policy"
+  ],
+  "risk_checks": [
+    "No copyrighted content bundled",
+    "No misleading claims",
+    "Privacy disclosures align with telemetry choices"
+  ]
+}

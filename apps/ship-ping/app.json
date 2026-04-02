@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "ShipPing",
+    "slug": "ship-ping",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "platforms": [
+      "android"
+    ],
+    "android": {
+      "package": "com.harshitlabs.shippingo",
+      "adaptiveIcon": {
+        "backgroundColor": "#38bdf8"
+      }
+    },
+    "extra": {
+      "tagline": "Monitor your product's critical endpoints and cron jobs from your phone."
+    }
+  }
+}

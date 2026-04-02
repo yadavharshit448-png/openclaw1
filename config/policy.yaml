@@ -1,0 +1,29 @@
+mode: review_gated
+max_apps_per_week: 1
+min_originality_score: 8
+forbidden_categories:
+  - gambling
+  - medical_diagnosis
+  - impersonation
+  - copyright_infringement
+  - deceptive_ads
+quality_gates:
+  min_test_pass_rate: 1.0
+  require_privacy_policy: true
+  require_unique_store_listing: true
+  require_basic_accessibility_review: true
+  require_policy_review: true
+  distribution_track: internal
+ideation_rules:
+  prioritize:
+    - utility
+    - productivity
+    - niche developer tools
+    - founder workflows
+    - recurring user pain points
+  avoid:
+    - wallpaper clones
+    - soundboard clones
+    - thin wrapper apps
+    - obvious template spam
+package_name_prefix: com.harshitlabs

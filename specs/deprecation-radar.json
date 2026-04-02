@@ -1,0 +1,37 @@
+{
+  "slug": "deprecation-radar",
+  "app_name": "Deprecation Radar",
+  "tagline": "Track API, SDK, and vendor change risk before it breaks your product.",
+  "package_name": "com.harshitlabs.deprecationradar",
+  "theme_seed": "#7c3aed",
+  "target_user": "Solo founders, indie hackers, and small developer teams that rely on third-party APIs, SDKs, and SaaS tools.",
+  "problem": "Important deprecation notices, pricing changes, SSL expiries, and migration deadlines get scattered across docs, emails, and status pages, so lean teams react too late.",
+  "solution": "A mobile command center for tracking vendors, logging deadlines, keeping migration notes, and surfacing the riskiest upcoming changes in one calm, offline-friendly workflow.",
+  "feature_v1": [
+    "Priority inbox for risks due in the next 7, 30, and 90 days",
+    "Tracked vendor cards with category, owner, and criticality",
+    "Deadline timeline for API sunsets, contract renewals, and certificate expiry",
+    "Migration checklist and notes for each vendor",
+    "Sample JSON export/import handoff section for offline-first workflows"
+  ],
+  "monetization": "Free tier for up to 10 vendors, then Pro for unlimited tracking, shared workspaces, and cloud sync later.",
+  "privacy_notes": [
+    "This MVP uses demo data only and does not send vendor data anywhere.",
+    "If notifications or cloud sync are added later, publish a privacy policy before release.",
+    "Avoid collecting sensitive credentials; store only metadata about dependencies and deadlines."
+  ],
+  "screens": [
+    {
+      "title": "Command Center",
+      "description": "Overview cards, due-soon counts, and a risk inbox with urgency filters."
+    },
+    {
+      "title": "Vendor Watchlist",
+      "description": "Tracked vendors with owners, categories, links, and migration progress."
+    },
+    {
+      "title": "Timeline & Notes",
+      "description": "Upcoming deadlines, recent change notes, and export/import reminders."
+    }
+  ]
+}
