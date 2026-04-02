@@ -84,13 +84,14 @@ jobs:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
       - name: Submit to Play internal testing
-        if: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON != '' }}
+        if: ${{ env.GOOGLE_SERVICE_ACCOUNT_JSON != '' }}
         working-directory: ${{ needs.prepare.outputs.app_path }}
         run: |
-          printf '%s' '${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}' > google-service-account.json
+          printf '%s' "$GOOGLE_SERVICE_ACCOUNT_JSON" > google-service-account.json
           eas submit --platform android --non-interactive --latest --profile production
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           GOOGLE_SERVICE_ACCOUNT_KEY_PATH: google-service-account.json
 
 # Notes:
