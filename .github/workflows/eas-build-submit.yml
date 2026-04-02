@@ -4,37 +4,42 @@ on:
   workflow_dispatch:
     inputs:
       app_path:
-        description: "App directory to build, e.g. apps/api-price-watch"
+        description: App directory to build, for example apps/support-replay
         required: false
-        default: "apps/api-price-watch"
+        default: apps/support-replay
   push:
-    branches: [ main ]
+    branches:
+      - main
     paths:
       - 'apps/**'
       - '.github/workflows/eas-build-submit.yml'
 
 jobs:
-  prepare:
+  build-android:
     runs-on: ubuntu-latest
-    outputs:
-      app_path: ${{ steps.pick.outputs.app_path }}
-      app_slug: ${{ steps.pick.outputs.app_slug }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 2
 
-      - name: Select app path
-        id: pick
+      - name: Resolve app path
+        id: resolve
         shell: bash
+        env:
+          INPUT_APP_PATH: ${{ github.event.inputs.app_path }}
         run: |
           set -euo pipefail
-          INPUT_APP_PATH='${{ github.event.inputs.app_path }}'
-          if [ -n "$INPUT_APP_PATH" ]; then
+
+          if [ -n "${INPUT_APP_PATH:-}" ]; then
             APP_PATH="$INPUT_APP_PATH"
           else
-            APP_PATH="$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" | grep '^apps/[^/]\+/' | cut -d/ -f1-2 | sort -u | head -n1 || true)"
+            BEFORE_SHA="${{ github.event.before }}"
+            if [ -n "$BEFORE_SHA" ]; then
+              APP_PATH="$(git diff --name-only "$BEFORE_SHA" "${{ github.sha }}" | grep '^apps/[^/]\+/' | cut -d/ -f1-2 | sort -u | head -n1 || true)"
+            else
+              APP_PATH=""
+            fi
           fi
 
           if [ -z "$APP_PATH" ]; then
@@ -48,64 +53,56 @@ jobs:
 
           echo "Selected app path: $APP_PATH"
           echo "app_path=$APP_PATH" >> "$GITHUB_OUTPUT"
-          echo "app_slug=$(basename "$APP_PATH")" >> "$GITHUB_OUTPUT"
-
-  build-android:
-    runs-on: ubuntu-latest
-    needs: prepare
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: ${{ needs.prepare.outputs.app_path }}/package.json
+          cache-dependency-path: ${{ steps.resolve.outputs.app_path }}/package.json
 
       - name: Setup Expo and EAS
         run: npm install -g eas-cli expo
 
       - name: Install app dependencies
-        working-directory: ${{ needs.prepare.outputs.app_path }}
+        working-directory: ${{ steps.resolve.outputs.app_path }}
         run: npm install
 
       - name: Check whether EAS project is already linked
         id: eas_link
-        working-directory: ${{ needs.prepare.outputs.app_path }}
+        working-directory: ${{ steps.resolve.outputs.app_path }}
         shell: bash
         run: |
           python3 - <<'PY' >> "$GITHUB_OUTPUT"
-import json
-from pathlib import Path
-app = json.loads(Path('app.json').read_text())
-project_id = app.get('expo', {}).get('extra', {}).get('eas', {}).get('projectId')
-print(f"has_project_id={'true' if project_id else 'false'}")
-PY
+          import json
+          from pathlib import Path
+          app = json.loads(Path('app.json').read_text())
+          project_id = app.get('expo', {}).get('extra', {}).get('eas', {}).get('projectId')
+          print(f"has_project_id={'true' if project_id else 'false'}")
+          PY
 
       - name: Ensure EAS project is linked
-        if: ${{ steps.eas_link.outputs.has_project_id != 'true' }}
-        working-directory: ${{ needs.prepare.outputs.app_path }}
+        if: steps.eas_link.outputs.has_project_id != 'true'
+        working-directory: ${{ steps.resolve.outputs.app_path }}
         run: eas project:init --force --non-interactive
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
       - name: Authenticate with Expo
-        working-directory: ${{ needs.prepare.outputs.app_path }}
+        working-directory: ${{ steps.resolve.outputs.app_path }}
         run: eas whoami
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
       - name: Build Android AAB
-        working-directory: ${{ needs.prepare.outputs.app_path }}
+        working-directory: ${{ steps.resolve.outputs.app_path }}
         run: eas build --platform android --non-interactive --profile production
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
       - name: Submit to Play internal testing
-        if: ${{ env.GOOGLE_SERVICE_ACCOUNT_JSON != '' }}
-        working-directory: ${{ needs.prepare.outputs.app_path }}
+        if: env.GOOGLE_SERVICE_ACCOUNT_JSON != ''
+        working-directory: ${{ steps.resolve.outputs.app_path }}
         run: |
           printf '%s' "$GOOGLE_SERVICE_ACCOUNT_JSON" > google-service-account.json
           eas submit --platform android --non-interactive --latest --profile production
@@ -113,8 +110,3 @@ PY
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           GOOGLE_SERVICE_ACCOUNT_KEY_PATH: google-service-account.json
-
-# Notes:
-# - This workflow builds a selected app under apps/<slug>/ instead of the monorepo root.
-# - Use workflow_dispatch with app_path to build a specific app on demand.
-# - Production rollout should stay manual until the first few releases are validated.
